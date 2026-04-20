@@ -1,0 +1,34 @@
+{
+  "exalbom": {
+    "nombre": "EXALBOM, S.L.",
+    "codigo": "001",
+    "color": "#1e4db7",
+    "pais": "es",
+    "modulos": ["facturas", "horario", "dashboard", "drive"],
+    "activo": true
+  },
+  "ibes": {
+    "nombre": "IBERICA DE BOMBEOS, S.L.",
+    "codigo": "200",
+    "color": "#c0392b",
+    "pais": "es",
+    "modulos": ["facturas", "horario", "dashboard", "drive"],
+    "activo": true
+  },
+  "costa": {
+    "nombre": "COSTA BOMBEOS, S.L.",
+    "codigo": "100",
+    "color": "#16a085",
+    "pais": "es",
+    "modulos": ["facturas", "horario", "dashboard"],
+    "activo": true
+  },
+  "luso": {
+    "nombre": "LUSO BOMBAS DE BETAO",
+    "codigo": "300",
+    "color": "#8e44ad",
+    "pais": "pt",
+    "modulos": ["facturas", "horario", "dashboard"],
+    "activo": true
+  }
+}
