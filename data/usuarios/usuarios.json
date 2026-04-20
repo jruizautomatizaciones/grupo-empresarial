@@ -3,35 +3,42 @@
     "nombre": "Jose Ruiz",
     "password": "jose1979",
     "rol": "admin",
-    "empresas": ["exalbom", "ibes", "costa", "luso"],
+    "empresas": ["exalbom", "luso", "infamevi", "bommesa", "costa", "ibes"],
     "email": "jose1000.r@gmail.com"
   },
-  "exalbom": {
-    "nombre": "Usuario EXALBOM",
-    "password": "exalbom2026",
-    "rol": "empresa",
+  "juanantonio": {
+    "nombre": "Juan Antonio",
+    "password": "ja2026",
+    "rol": "usuario",
+    "empresas": ["exalbom", "luso", "infamevi", "bommesa", "costa", "ibes"],
+    "email": ""
+  },
+  "candeli": {
+    "nombre": "Candeli",
+    "password": "candeli2026",
+    "rol": "usuario",
     "empresas": ["exalbom"],
     "email": ""
   },
-  "ibes": {
-    "nombre": "Usuario IBES",
-    "password": "ibes2026",
-    "rol": "empresa",
-    "empresas": ["ibes"],
+  "stomaz": {
+    "nombre": "Stomaz",
+    "password": "stomaz2026",
+    "rol": "usuario",
+    "empresas": ["luso"],
     "email": ""
   },
-  "costa": {
-    "nombre": "Usuario COSTA",
-    "password": "costa2026",
-    "rol": "empresa",
+  "castillo": {
+    "nombre": "Castillo",
+    "password": "castillo2026",
+    "rol": "usuario",
     "empresas": ["costa"],
     "email": ""
   },
-  "luso": {
-    "nombre": "Usuario LUSO",
-    "password": "luso2026",
-    "rol": "empresa",
-    "empresas": ["luso"],
+  "sara": {
+    "nombre": "Sara",
+    "password": "sara2026",
+    "rol": "usuario",
+    "empresas": ["ibes"],
     "email": ""
   }
 }

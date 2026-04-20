@@ -1,6 +1,7 @@
 {
   "exalbom": {
     "nombre": "EXALBOM, S.L.",
+    "cif": "B93203164",
     "codigo": "001",
     "color": "#1e4db7",
     "pais": "es",
@@ -9,6 +10,7 @@
   },
   "ibes": {
     "nombre": "IBERICA DE BOMBEOS, S.L.",
+    "cif": "B83737619",
     "codigo": "200",
     "color": "#c0392b",
     "pais": "es",
@@ -17,18 +19,38 @@
   },
   "costa": {
     "nombre": "COSTA BOMBEOS, S.L.",
+    "cif": "PENDIENTE",
     "codigo": "100",
     "color": "#16a085",
     "pais": "es",
-    "modulos": ["facturas", "horario", "dashboard"],
+    "modulos": ["facturas", "horario", "dashboard", "drive"],
     "activo": true
   },
   "luso": {
-    "nombre": "LUSO BOMBAS DE BETAO",
+    "nombre": "LUSO BOMBA DE BETAO UNIPESSOAL LDA",
+    "cif": "510581897F",
     "codigo": "300",
     "color": "#8e44ad",
     "pais": "pt",
-    "modulos": ["facturas", "horario", "dashboard"],
+    "modulos": ["facturas", "horario", "dashboard", "drive"],
+    "activo": true
+  },
+  "infamevi": {
+    "nombre": "INFAMEVI, S.L.",
+    "cif": "B42780528",
+    "codigo": "400",
+    "color": "#d35400",
+    "pais": "es",
+    "modulos": ["facturas", "horario", "dashboard", "drive"],
+    "activo": true
+  },
+  "bommesa": {
+    "nombre": "BOMMESA, S.L.",
+    "cif": "B93032134",
+    "codigo": "500",
+    "color": "#27ae60",
+    "pais": "es",
+    "modulos": ["facturas", "horario", "dashboard", "drive"],
     "activo": true
   }
 }
