@@ -6,10 +6,9 @@
 <title>Login - Grupo Empresarial</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-
 body {
   font-family: Arial, sans-serif;
-  background: #f0f0f0;
+  background: #f2f2f2;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -19,35 +18,10 @@ body {
   overflow: hidden;
 }
 
-/* ONDAS ESQUINAS */
-.onda-tl {
-  position: fixed; top: 0; left: 0;
-  width: 280px; height: 220px;
-  background: linear-gradient(135deg, #8b0000 0%, #cc0000 40%, #ff8800 100%);
-  border-radius: 0 0 100% 0;
-  z-index: 0;
-}
-.onda-tr {
-  position: fixed; top: 0; right: 0;
-  width: 180px; height: 160px;
-  background: linear-gradient(225deg, #ff8800 0%, #cc4400 100%);
-  border-radius: 0 0 0 100%;
-  z-index: 0;
-}
-.onda-br {
-  position: fixed; bottom: 0; right: 0;
-  width: 260px; height: 200px;
-  background: linear-gradient(315deg, #8b0000 0%, #cc0000 50%, #ff6600 100%);
-  border-radius: 100% 0 0 0;
-  z-index: 0;
-}
-.onda-bl {
-  position: fixed; bottom: 0; left: 0;
-  width: 160px; height: 140px;
-  background: linear-gradient(45deg, #ff8800 0%, #cc4400 100%);
-  border-radius: 0 100% 0 0;
-  z-index: 0;
-}
+/* ONDAS FIJAS */
+.onda { position: fixed; pointer-events: none; z-index: 0; }
+.onda-tl { top: 0; left: 0; }
+.onda-br { bottom: 0; right: 0; }
 
 /* CONTENIDO */
 .contenido {
@@ -57,132 +31,154 @@ body {
 }
 
 /* CABECERA */
-.cabecera { text-align: center; margin-bottom: 28px; }
+.cabecera { text-align: center; margin-bottom: 30px; }
 .titulo-grupo {
-  font-size: 38px; font-weight: 900;
-  color: #8b0000; letter-spacing: 2px;
+  font-size: 42px; font-weight: 900;
+  color: #8b0000; letter-spacing: 3px;
   text-transform: uppercase;
 }
 .subtitulo-grupo {
-  font-size: 12px; letter-spacing: 5px;
-  color: #666; text-transform: uppercase;
-  margin-top: 6px; font-weight: 400;
+  font-size: 11px; letter-spacing: 6px;
+  color: #777; text-transform: uppercase;
+  margin-top: 6px;
 }
 .linea-deco {
   display: flex; align-items: center;
   justify-content: center; gap: 8px;
-  margin-top: 12px;
+  margin-top: 14px;
 }
-.linea-deco .l { width: 60px; height: 2px; background: #8b0000; border-radius: 2px; }
-.linea-deco .p { width: 8px; height: 8px; background: #ff8800; border-radius: 50%; }
+.linea-deco .l { width: 55px; height: 2px; background: #8b0000; border-radius: 2px; }
+.linea-deco .p { width: 9px; height: 9px; background: #ff8800; border-radius: 50%; }
 
 /* TARJETA */
 .card {
   background: white;
-  border-radius: 16px;
-  padding: 40px 44px;
-  width: 420px;
-  box-shadow: 0 16px 48px rgba(0,0,0,.12);
+  border-radius: 18px;
+  padding: 42px 48px;
+  width: 430px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.10);
 }
-
 .card-titulo {
-  font-size: 24px; font-weight: 700;
-  color: #8b0000; text-align: center;
-  margin-bottom: 4px;
+  font-size: 26px; font-weight: 700;
+  color: #8b0000; text-align: center; margin-bottom: 4px;
 }
 .card-sub {
-  font-size: 13px; color: #888;
-  text-align: center; margin-bottom: 28px;
+  font-size: 13px; color: #999;
+  text-align: center; margin-bottom: 30px;
 }
 
 /* ERROR */
 .error-box {
   background: #fff5f5; border: 1px solid #f5c6c6;
-  border-left: 3px solid #8b0000;
-  border-radius: 8px; padding: 10px 14px;
-  color: #8b0000; font-size: 12px;
-  margin-bottom: 18px;
+  border-left: 3px solid #8b0000; border-radius: 8px;
+  padding: 10px 14px; color: #8b0000;
+  font-size: 12px; margin-bottom: 18px;
 }
 
 /* CAMPOS */
-.campo { margin-bottom: 20px; }
+.campo { margin-bottom: 22px; }
 .campo-label {
   font-size: 11px; font-weight: 800;
   letter-spacing: 2px; color: #333;
-  text-transform: uppercase; margin-bottom: 8px;
+  text-transform: uppercase; margin-bottom: 9px;
   display: block;
 }
 .input-wrap {
   display: flex; align-items: center;
-  border: 1.5px solid #e0e0e0;
-  border-radius: 10px; overflow: hidden;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 10px; background: white;
   transition: .2s;
-  background: white;
 }
 .input-wrap:focus-within {
   border-color: #8b0000;
-  box-shadow: 0 0 0 3px rgba(139,0,0,.08);
+  box-shadow: 0 0 0 3px rgba(139,0,0,.07);
 }
-.input-icon {
-  padding: 0 14px;
-  font-size: 17px; color: #8b0000;
-  flex-shrink: 0;
-}
+.input-icon { padding: 0 14px; font-size: 18px; color: #8b0000; flex-shrink:0; }
 .input-wrap input {
-  flex: 1; padding: 13px 10px 13px 0;
+  flex:1; padding: 14px 8px 14px 0;
   border: none; outline: none;
   font-size: 14px; color: #333;
   font-family: Arial, sans-serif;
   background: transparent;
 }
-.input-wrap input::placeholder { color: #bbb; }
+.input-wrap input::placeholder { color: #ccc; }
 .toggle-pwd {
   padding: 0 14px; cursor: pointer;
-  font-size: 17px; color: #aaa;
-  user-select: none;
+  font-size: 17px; color: #bbb;
 }
 .toggle-pwd:hover { color: #8b0000; }
 
 /* BOTÓN */
 .btn {
-  width: 100%; padding: 15px;
-  background: linear-gradient(135deg, #8b0000 0%, #a00000 100%);
+  width: 100%; padding: 16px;
+  background: #8b0000;
   border: none; border-radius: 10px;
   color: white; font-size: 14px;
   font-weight: 800; letter-spacing: 2px;
   text-transform: uppercase; cursor: pointer;
-  transition: .2s; margin-top: 8px;
+  transition: .2s; margin-top: 6px;
   font-family: Arial, sans-serif;
 }
 .btn:hover {
-  background: linear-gradient(135deg, #700000, #8b0000);
+  background: #700000;
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(139,0,0,.3);
+  box-shadow: 0 8px 24px rgba(139,0,0,.25);
 }
 
-/* LINEA INFERIOR */
+/* LINEA PIE */
 .linea-inf {
   display: flex; align-items: center;
-  gap: 8px; margin: 22px 0 16px;
+  gap: 8px; margin: 24px 0 16px;
 }
-.linea-inf .l { flex:1; height:1px; background:#eee; }
-.linea-inf .p { width:8px; height:8px; background:#ff8800; border-radius:50%; flex-shrink:0; }
+.linea-inf .l { flex:1; height:1px; background:#eeeeee; }
+.linea-inf .p { width:9px; height:9px; background:#ff8800; border-radius:50%; flex-shrink:0; }
 
 /* FOOTER */
-.footer {
-  font-size: 12px; color: #aaa;
-  text-align: center;
-}
-.footer strong { color: #555; }
+.footer { font-size: 12px; text-align: center; color: #aaa; }
+.footer .jrc { color: #c8960c; font-weight: 900; letter-spacing: 1px; }
+.footer .resto { color: #555; font-weight: 700; }
 </style>
 </head>
 <body>
 
-<!-- ONDAS -->
-<div class="onda-tl"></div>
-<div class="onda-tr"></div>
-<div class="onda-br"></div>
-<div class="onda-bl"></div>
+<!-- ONDA SUPERIOR IZQUIERDA -->
+<svg class="onda onda-tl" width="340" height="280" viewBox="0 0 340 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gtl1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7a0000"/>
+      <stop offset="50%" stop-color="#cc1100"/>
+      <stop offset="100%" stop-color="#ff7700"/>
+    </linearGradient>
+    <linearGradient id="gtl2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6600"/>
+      <stop offset="100%" stop-color="#ffaa00"/>
+    </linearGradient>
+  </defs>
+  <!-- Onda roja principal -->
+  <path d="M0,0 L340,0 C280,0 200,20 160,80 C120,140 60,180 0,160 Z" fill="url(#gtl1)"/>
+  <!-- Onda naranja secundaria -->
+  <path d="M0,0 L200,0 C160,0 100,30 70,80 C40,130 10,150 0,130 Z" fill="url(#gtl2)" opacity="0.85"/>
+  <!-- Highlight blanco -->
+  <path d="M0,0 L120,0 C90,0 50,20 30,55 C10,85 0,100 0,85 Z" fill="white" opacity="0.08"/>
+</svg>
+
+<!-- ONDA INFERIOR DERECHA -->
+<svg class="onda onda-br" width="340" height="280" viewBox="0 0 340 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gbr1" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#7a0000"/>
+      <stop offset="50%" stop-color="#cc1100"/>
+      <stop offset="100%" stop-color="#ff7700"/>
+    </linearGradient>
+    <linearGradient id="gbr2" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#ff6600"/>
+      <stop offset="100%" stop-color="#ffaa00"/>
+    </linearGradient>
+  </defs>
+  <path d="M340,280 L0,280 C60,280 140,260 180,200 C220,140 280,100 340,120 Z" fill="url(#gbr1)"/>
+  <path d="M340,280 L140,280 C180,280 240,250 270,200 C300,150 330,130 340,150 Z" fill="url(#gbr2)" opacity="0.85"/>
+  <path d="M340,280 L220,280 C250,280 290,260 310,225 C330,195 340,180 340,195 Z" fill="white" opacity="0.08"/>
+</svg>
 
 <div class="contenido">
 
@@ -199,7 +195,6 @@ body {
 
   <!-- TARJETA -->
   <div class="card">
-
     <div class="card-titulo">Bienvenido</div>
     <div class="card-sub">Inicie sesi&oacute;n para continuar</div>
 
@@ -208,7 +203,6 @@ body {
     {% endif %}
 
     <form method="POST">
-
       <div class="campo">
         <label class="campo-label">Usuario</label>
         <div class="input-wrap">
@@ -216,7 +210,6 @@ body {
           <input type="text" name="usuario" placeholder="Ingrese su usuario" autofocus autocomplete="username">
         </div>
       </div>
-
       <div class="campo">
         <label class="campo-label">Contrase&ntilde;a</label>
         <div class="input-wrap">
@@ -225,9 +218,7 @@ body {
           <span class="toggle-pwd" onclick="togglePwd()">&#128065;</span>
         </div>
       </div>
-
       <button type="submit" class="btn">Iniciar Sesi&oacute;n</button>
-
     </form>
 
     <div class="linea-inf">
@@ -237,9 +228,8 @@ body {
     </div>
 
     <div class="footer">
-      Desarrollado por <strong>JRC AUTOMATIZACIONES</strong>
+      Desarrollado por <span class="jrc">JRC</span><span class="resto"> AUTOMATIZACIONES</span>
     </div>
-
   </div>
 
 </div>
