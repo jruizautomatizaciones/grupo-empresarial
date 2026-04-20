@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{{ empresa.nombre }}{% endblock %}
+{% block extra_css %}
+.emp-header{background:{{ empresa.color }};padding:32px 40px;display:flex;align-items:center;justify-content:space-between;}
+.emp-cod{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,.5);letter-spacing:2px;margin-bottom:6px;}
+.emp-nom{font-size:26px;font-weight:800;color:white;letter-spacing:-0.3px;}
+.back{color:rgba(255,255,255,.6);text-decoration:none;font-size:12px;padding:7px 14px;border:1px solid rgba(255,255,255,.2);border-radius:8px;transition:.15s;}
+.back:hover{background:rgba(255,255,255,.1);color:white;}
+.mtit{padding:28px 40px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#aaa;}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;padding:0 40px 48px;}
+.mcard{background:white;border-radius:14px;border:2px solid #eee;padding:28px 24px;text-decoration:none;color:#1a1a2e;transition:.2s;display:flex;flex-direction:column;gap:12px;}
+.mcard:hover{border-color:{{ empresa.color }};box-shadow:0 6px 24px rgba(0,0,0,.08);transform:translateY(-2px);}
+.micon{font-size:28px;}
+.mnom{font-size:15px;font-weight:700;}
+.mdesc{font-size:11px;color:#aaa;}
+.mst{display:inline-block;padding:3px 10px;border-radius:20px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:4px;}
+.st-ok{background:#d1fae5;color:#065f46;}
+.st-no{background:#f0f3fa;color:#aaa;}
+{% endblock %}
+{% block content %}
+<div class="emp-header">
+  <div>
+    <div class="emp-cod">{{ empresa.codigo }} &middot; {{ empresa.pais | upper }}</div>
+    <div class="emp-nom">{{ empresa.nombre }}</div>
+  </div>
+  <a href="/home" class="back">&larr; Cambiar empresa</a>
+</div>
+<div class="mtit">Modulos disponibles</div>
+<div class="mgrid">
+  {% set info = {'facturas':{'i':'📄','n':'Facturas Proveedores','d':'Gestion automatica de facturas'},'horario':{'i':'⏰','n':'Control Horario','d':'Fichaje y horas extra'},'dashboard':{'i':'📊','n':'Dashboard','d':'Resumen y estadisticas'},'drive':{'i':'📁','n':'Documentos Drive','d':'Archivos y documentos'}} %}
+  {% for mod in empresa.modulos %}
+  {% set m = info.get(mod, {'i':'🔧','n':mod,'d':''}) %}
+  <a href="/empresa/{{ empresa_id }}/{{ mod }}" class="mcard">
+    <div class="micon">{{ m.i }}</div>
+    <div><div class="mnom">{{ m.n }}</div><div class="mdesc">{{ m.d }}</div></div>
+    {% if mod in ['facturas','horario'] and empresa_id in ['exalbom','ibes'] %}
+    <span class="mst st-ok">&#10003; Activo</span>
+    {% else %}
+    <span class="mst st-no">Proximamente</span>
+    {% endif %}
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}

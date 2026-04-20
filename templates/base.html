@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>{% block title %}Grupo Empresarial{% endblock %}</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Sora',sans-serif;background:#f0f3fa;color:#1a1a2e;min-height:100vh;}
+.nav{background:#0a2463;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(10,36,99,.25);}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.marca{font-family:'DM Mono',monospace;color:white;font-size:14px;letter-spacing:3px;font-weight:500;}
+.sep{width:1px;height:28px;background:rgba(255,255,255,.2);}
+.sub{color:rgba(255,255,255,.5);font-size:11px;letter-spacing:1px;text-transform:uppercase;}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.nav-user{color:rgba(255,255,255,.7);font-size:12px;}
+.nav-user strong{color:white;}
+.nav-btn{color:rgba(255,255,255,.5);text-decoration:none;font-size:11px;padding:5px 10px;border:1px solid rgba(255,255,255,.15);border-radius:6px;transition:.15s;}
+.nav-btn:hover{background:rgba(255,255,255,.1);color:white;}
+{% block extra_css %}{% endblock %}
+</style>
+</head>
+<body>
+{% if session.usuario %}
+<nav class="nav">
+  <a href="/home" class="nav-logo">
+    <span class="marca">GRUPO</span>
+    <div class="sep"></div>
+    <span class="sub">Panel Empresarial</span>
+  </a>
+  <div class="nav-right">
+    <span class="nav-user">Hola, <strong>{{ session.usuario.nombre.split()[0] }}</strong></span>
+    {% if session.usuario.rol == 'admin' %}
+    <a href="/admin/usuarios" class="nav-btn">&#9881; Admin</a>
+    {% endif %}
+    <a href="/logout" class="nav-btn">Salir</a>
+  </div>
+</nav>
+{% endif %}
+{% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Inicio — Grupo Empresarial{% endblock %}
+{% block extra_css %}
+.hero{padding:48px 40px 24px;}
+.hero-sal{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:#aaa;margin-bottom:8px;}
+.hero-tit{font-size:32px;font-weight:800;color:#1a1a2e;letter-spacing:-0.5px;}
+.hero-tit span{color:#1e4db7;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;padding:12px 40px 48px;}
+.ecard{background:white;border-radius:16px;border:2px solid #eee;padding:28px;text-decoration:none;color:#1a1a2e;transition:.2s;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden;}
+.ecard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--c);}
+.ecard:hover{border-color:var(--c);box-shadow:0 8px 32px rgba(0,0,0,.08);transform:translateY(-3px);}
+.ecod{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:#aaa;letter-spacing:2px;}
+.enombre{font-size:17px;font-weight:700;line-height:1.2;}
+.emods{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
+.mbadge{padding:3px 10px;border-radius:20px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;background:#f0f3fa;color:#666;}
+.earrow{position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:20px;color:#ddd;transition:.2s;}
+.ecard:hover .earrow{color:var(--c);transform:translateY(-50%) translateX(4px);}
+.admin-bar{margin:0 40px 24px;background:linear-gradient(135deg,#0a2463,#1e4db7);border-radius:12px;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;}
+.admin-txt{color:white;font-size:13px;font-weight:600;}
+.admin-txt span{color:rgba(255,255,255,.6);font-weight:300;font-size:12px;display:block;margin-top:2px;}
+.admin-btn{background:rgba(255,255,255,.15);color:white;border:1px solid rgba(255,255,255,.2);padding:8px 16px;border-radius:8px;text-decoration:none;font-size:12px;font-weight:600;transition:.15s;}
+.admin-btn:hover{background:rgba(255,255,255,.25);}
+{% endblock %}
+{% block content %}
+<div class="hero">
+  <div class="hero-sal">Panel Empresarial</div>
+  <div class="hero-tit">Hola, <span>{{ usuario.nombre.split()[0] }}</span> &#128075;</div>
+</div>
+{% if usuario.rol == 'admin' %}
+<div class="admin-bar">
+  <div class="admin-txt">Administrador del grupo<span>Acceso completo a todas las empresas</span></div>
+  <a href="/admin/usuarios" class="admin-btn">&#9881; Gestionar usuarios</a>
+</div>
+{% endif %}
+<div class="grid">
+  {% for emp_id, emp in empresas.items() %}
+  <a href="/empresa/{{ emp_id }}" class="ecard" style="--c:{{ emp.color }}">
+    <div>
+      <div class="ecod">{{ emp.codigo }} &middot; {{ emp.pais | upper }}</div>
+      <div class="enombre">{{ emp.nombre }}</div>
+    </div>
+    <div class="emods">
+      {% for mod in emp.modulos %}<span class="mbadge">{{ mod }}</span>{% endfor %}
+    </div>
+    <span class="earrow">&rarr;</span>
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}

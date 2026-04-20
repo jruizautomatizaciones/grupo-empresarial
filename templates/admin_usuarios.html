@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Admin Usuarios{% endblock %}
+{% block extra_css %}
+.ahero{background:linear-gradient(135deg,#0a2463,#1e4db7);padding:28px 40px;}
+.atit{font-size:22px;font-weight:700;color:white;}
+.asub{color:rgba(255,255,255,.5);font-size:12px;margin-top:4px;}
+.abody{padding:32px 40px;}
+.aback{color:#aaa;text-decoration:none;font-size:12px;display:inline-block;margin-bottom:20px;}
+table{width:100%;border-collapse:collapse;background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+th{background:#f8faff;padding:12px 16px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#aaa;border-bottom:1px solid #eee;}
+td{padding:14px 16px;font-size:13px;border-bottom:1px solid #f5f5f5;}
+tr:last-child td{border-bottom:none;}
+.rbadge{padding:3px 10px;border-radius:20px;font-size:9px;font-weight:700;text-transform:uppercase;}
+.r-admin{background:#dbeafe;color:#1e4db7;}
+.r-empresa{background:#d1fae5;color:#065f46;}
+.etags{display:flex;gap:4px;flex-wrap:wrap;}
+.etag{padding:2px 8px;border-radius:12px;font-size:9px;font-weight:600;background:#f0f3fa;color:#666;}
+{% endblock %}
+{% block content %}
+<div class="ahero">
+  <div class="atit">&#9881; Gestion de Usuarios</div>
+  <div class="asub">Administracion del acceso al sistema</div>
+</div>
+<div class="abody">
+  <a href="/home" class="aback">&larr; Volver al inicio</a>
+  <table>
+    <thead>
+      <tr><th>Usuario</th><th>Nombre</th><th>Rol</th><th>Empresas</th><th>Email</th></tr>
+    </thead>
+    <tbody>
+      {% for uid, u in usuarios.items() %}
+      <tr>
+        <td><strong style="font-family:'DM Mono',monospace;">{{ uid }}</strong></td>
+        <td>{{ u.nombre }}</td>
+        <td><span class="rbadge r-{{ u.rol }}">{{ u.rol }}</span></td>
+        <td>
+          <div class="etags">
+            {% for emp in u.empresas %}
+            <span class="etag">{{ emp | upper }}</span>
+            {% endfor %}
+          </div>
+        </td>
+        <td style="color:#aaa;font-size:11px;">{{ u.email or '—' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

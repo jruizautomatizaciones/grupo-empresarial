@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{ titulo }} — {{ empresa.nombre }}{% endblock %}
+{% block extra_css %}
+.mhero{background:{{ empresa.color }};padding:28px 40px;display:flex;align-items:center;gap:16px;}
+.mhico{font-size:32px;}
+.mhemp{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:1px;text-transform:uppercase;}
+.mhtit{font-size:22px;font-weight:700;color:white;}
+.mbody{padding:40px;}
+.mback{display:inline-block;margin-bottom:24px;color:#aaa;text-decoration:none;font-size:12px;}
+.mback:hover{color:#1e4db7;}
+.mbox{background:white;border-radius:14px;border:2px dashed #dde3f0;padding:60px;text-align:center;color:#aaa;}
+.mboxic{font-size:48px;margin-bottom:16px;}
+.mboxt{font-size:16px;font-weight:600;}
+.mboxs{font-size:12px;margin-top:8px;}
+{% endblock %}
+{% block content %}
+<div class="mhero">
+  <div class="mhico">{{ icono }}</div>
+  <div><div class="mhemp">{{ empresa.nombre }}</div><div class="mhtit">{{ titulo }}</div></div>
+</div>
+<div class="mbody">
+  <a href="/empresa/{{ empresa_id }}" class="mback">&larr; Volver al menu</a>
+  <div class="mbox">
+    <div class="mboxic">{{ icono }}</div>
+    <div class="mboxt">{{ titulo }}</div>
+    <div class="mboxs">{{ estado }}</div>
+  </div>
+</div>
+{% endblock %}
