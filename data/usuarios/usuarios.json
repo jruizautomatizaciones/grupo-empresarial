@@ -1,44 +1,44 @@
 {
-  "jose": {
+  "joser": {
     "nombre": "Jose Ruiz",
-    "password": "jose1979",
+    "password": "JOSE1979",
     "rol": "admin",
     "empresas": ["exalbom", "luso", "infamevi", "bommesa", "costa", "ibes"],
     "email": "jose1000.r@gmail.com"
   },
   "juanantonio": {
     "nombre": "Juan Antonio",
-    "password": "ja2026",
+    "password": "NyJ60052",
     "rol": "usuario",
     "empresas": ["exalbom", "luso", "infamevi", "bommesa", "costa", "ibes"],
     "email": ""
   },
   "candeli": {
     "nombre": "Candeli",
-    "password": "candeli2026",
+    "password": "Candeli65",
     "rol": "usuario",
     "empresas": ["exalbom"],
     "email": ""
   },
-  "stomaz": {
-    "nombre": "Stomaz",
-    "password": "stomaz2026",
-    "rol": "usuario",
-    "empresas": ["luso"],
-    "email": ""
-  },
   "castillo": {
     "nombre": "Castillo",
-    "password": "castillo2026",
+    "password": "74864277",
     "rol": "usuario",
     "empresas": ["costa"],
     "email": ""
   },
   "sara": {
     "nombre": "Sara",
-    "password": "sara2026",
+    "password": "Sara22",
     "rol": "usuario",
     "empresas": ["ibes"],
+    "email": ""
+  },
+  "stomaz": {
+    "nombre": "Stomaz",
+    "password": "STOMAZ",
+    "rol": "usuario",
+    "empresas": ["luso"],
     "email": ""
   }
 }
