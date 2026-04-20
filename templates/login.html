@@ -5,200 +5,235 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login - Grupo Empresarial</title>
 <style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #f4f4f4, #eaeaea);
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.bg-top {
-    position: absolute;
-    top: 0; left: 0;
-    width: 300px; height: 200px;
-    background: linear-gradient(45deg, #b30000, #ff9900);
-    border-bottom-right-radius: 200px;
+/* ONDAS ESQUINAS */
+.onda-tl {
+  position: fixed; top: 0; left: 0;
+  width: 280px; height: 220px;
+  background: linear-gradient(135deg, #8b0000 0%, #cc0000 40%, #ff8800 100%);
+  border-radius: 0 0 100% 0;
+  z-index: 0;
+}
+.onda-tr {
+  position: fixed; top: 0; right: 0;
+  width: 180px; height: 160px;
+  background: linear-gradient(225deg, #ff8800 0%, #cc4400 100%);
+  border-radius: 0 0 0 100%;
+  z-index: 0;
+}
+.onda-br {
+  position: fixed; bottom: 0; right: 0;
+  width: 260px; height: 200px;
+  background: linear-gradient(315deg, #8b0000 0%, #cc0000 50%, #ff6600 100%);
+  border-radius: 100% 0 0 0;
+  z-index: 0;
+}
+.onda-bl {
+  position: fixed; bottom: 0; left: 0;
+  width: 160px; height: 140px;
+  background: linear-gradient(45deg, #ff8800 0%, #cc4400 100%);
+  border-radius: 0 100% 0 0;
+  z-index: 0;
 }
 
-.bg-bottom {
-    position: absolute;
-    bottom: 0; right: 0;
-    width: 300px; height: 200px;
-    background: linear-gradient(45deg, #b30000, #ff9900);
-    border-top-left-radius: 200px;
+/* CONTENIDO */
+.contenido {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column;
+  align-items: center; width: 100%;
 }
 
-.container {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* CABECERA */
+.cabecera { text-align: center; margin-bottom: 28px; }
+.titulo-grupo {
+  font-size: 38px; font-weight: 900;
+  color: #8b0000; letter-spacing: 2px;
+  text-transform: uppercase;
 }
+.subtitulo-grupo {
+  font-size: 12px; letter-spacing: 5px;
+  color: #666; text-transform: uppercase;
+  margin-top: 6px; font-weight: 400;
+}
+.linea-deco {
+  display: flex; align-items: center;
+  justify-content: center; gap: 8px;
+  margin-top: 12px;
+}
+.linea-deco .l { width: 60px; height: 2px; background: #8b0000; border-radius: 2px; }
+.linea-deco .p { width: 8px; height: 8px; background: #ff8800; border-radius: 50%; }
 
+/* TARJETA */
 .card {
-    background: #fff;
-    padding: 40px;
-    border-radius: 12px;
-    width: 370px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    text-align: center;
-    position: relative;
-    z-index: 1;
+  background: white;
+  border-radius: 16px;
+  padding: 40px 44px;
+  width: 420px;
+  box-shadow: 0 16px 48px rgba(0,0,0,.12);
 }
 
-.logo-area {
-    margin-bottom: 8px;
+.card-titulo {
+  font-size: 24px; font-weight: 700;
+  color: #8b0000; text-align: center;
+  margin-bottom: 4px;
+}
+.card-sub {
+  font-size: 13px; color: #888;
+  text-align: center; margin-bottom: 28px;
 }
 
-.title {
-    font-size: 22px;
-    font-weight: bold;
-    color: #b30000;
-    letter-spacing: 1px;
-}
-
-.subtitle {
-    font-size: 11px;
-    color: #888;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-}
-
-.divider {
-    width: 40px; height: 3px;
-    background: linear-gradient(45deg, #b30000, #ff9900);
-    border-radius: 2px;
-    margin: 10px auto 20px;
-}
-
+/* ERROR */
 .error-box {
-    background: #fff5f5;
-    border: 1px solid #f5c6c6;
-    border-left: 3px solid #b30000;
-    border-radius: 6px;
-    padding: 10px 14px;
-    color: #b30000;
-    font-size: 12px;
-    margin-bottom: 16px;
-    text-align: left;
+  background: #fff5f5; border: 1px solid #f5c6c6;
+  border-left: 3px solid #8b0000;
+  border-radius: 8px; padding: 10px 14px;
+  color: #8b0000; font-size: 12px;
+  margin-bottom: 18px;
 }
 
-.label {
-    text-align: left;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    margin-top: 14px;
-    margin-bottom: 5px;
-    color: #555;
-    text-transform: uppercase;
+/* CAMPOS */
+.campo { margin-bottom: 20px; }
+.campo-label {
+  font-size: 11px; font-weight: 800;
+  letter-spacing: 2px; color: #333;
+  text-transform: uppercase; margin-bottom: 8px;
+  display: block;
+}
+.input-wrap {
+  display: flex; align-items: center;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px; overflow: hidden;
+  transition: .2s;
+  background: white;
+}
+.input-wrap:focus-within {
+  border-color: #8b0000;
+  box-shadow: 0 0 0 3px rgba(139,0,0,.08);
+}
+.input-icon {
+  padding: 0 14px;
+  font-size: 17px; color: #8b0000;
+  flex-shrink: 0;
+}
+.input-wrap input {
+  flex: 1; padding: 13px 10px 13px 0;
+  border: none; outline: none;
+  font-size: 14px; color: #333;
+  font-family: Arial, sans-serif;
+  background: transparent;
+}
+.input-wrap input::placeholder { color: #bbb; }
+.toggle-pwd {
+  padding: 0 14px; cursor: pointer;
+  font-size: 17px; color: #aaa;
+  user-select: none;
+}
+.toggle-pwd:hover { color: #8b0000; }
+
+/* BOTÓN */
+.btn {
+  width: 100%; padding: 15px;
+  background: linear-gradient(135deg, #8b0000 0%, #a00000 100%);
+  border: none; border-radius: 10px;
+  color: white; font-size: 14px;
+  font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; cursor: pointer;
+  transition: .2s; margin-top: 8px;
+  font-family: Arial, sans-serif;
+}
+.btn:hover {
+  background: linear-gradient(135deg, #700000, #8b0000);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(139,0,0,.3);
 }
 
-.input {
-    width: 100%;
-    padding: 11px 14px;
-    border-radius: 6px;
-    border: 1.5px solid #ddd;
-    font-size: 14px;
-    transition: .2s;
-    outline: none;
-    box-sizing: border-box;
+/* LINEA INFERIOR */
+.linea-inf {
+  display: flex; align-items: center;
+  gap: 8px; margin: 22px 0 16px;
 }
+.linea-inf .l { flex:1; height:1px; background:#eee; }
+.linea-inf .p { width:8px; height:8px; background:#ff8800; border-radius:50%; flex-shrink:0; }
 
-.input:focus {
-    border-color: #b30000;
-    box-shadow: 0 0 0 3px rgba(179,0,0,.08);
-}
-
-.button {
-    margin-top: 22px;
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 6px;
-    background: linear-gradient(45deg, #b30000, #990000);
-    color: white;
-    font-weight: bold;
-    font-size: 13px;
-    letter-spacing: 1.5px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: .2s;
-}
-
-.button:hover {
-    opacity: 0.88;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(179,0,0,.3);
-}
-
-.empresas {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    justify-content: center;
-    margin: 18px 0 4px;
-}
-
-.emp {
-    font-size: 9px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    border: 1px solid #eee;
-    color: #999;
-    text-transform: uppercase;
-}
-
+/* FOOTER */
 .footer {
-    margin-top: 20px;
-    font-size: 10px;
-    color: #bbb;
-    letter-spacing: .5px;
+  font-size: 12px; color: #aaa;
+  text-align: center;
 }
-
-.footer strong {
-    color: #b30000;
-}
+.footer strong { color: #555; }
 </style>
 </head>
 <body>
 
-<div class="bg-top"></div>
-<div class="bg-bottom"></div>
+<!-- ONDAS -->
+<div class="onda-tl"></div>
+<div class="onda-tr"></div>
+<div class="onda-br"></div>
+<div class="onda-bl"></div>
 
-<div class="container">
+<div class="contenido">
+
+  <!-- CABECERA -->
+  <div class="cabecera">
+    <div class="titulo-grupo">Grupo Empresarial</div>
+    <div class="subtitulo-grupo">Soluciones en Bombeo Industrial</div>
+    <div class="linea-deco">
+      <div class="l"></div>
+      <div class="p"></div>
+      <div class="l"></div>
+    </div>
+  </div>
+
+  <!-- TARJETA -->
   <div class="card">
 
-    <div class="logo-area">
-      <div class="title">GRUPO EMPRESARIAL</div>
-      <div class="subtitle">Soluciones en Bombeo Industrial</div>
-      <div class="divider"></div>
-    </div>
+    <div class="card-titulo">Bienvenido</div>
+    <div class="card-sub">Inicie sesi&oacute;n para continuar</div>
 
     {% if error %}
     <div class="error-box">&#9888; {{ error }}</div>
     {% endif %}
 
     <form method="POST">
-      <div class="label">Usuario</div>
-      <input class="input" name="usuario" placeholder="Ingrese su usuario" autofocus autocomplete="username">
 
-      <div class="label">Contrase&ntilde;a</div>
-      <input class="input" type="password" name="password" placeholder="Ingrese su contrase&ntilde;a" autocomplete="current-password">
+      <div class="campo">
+        <label class="campo-label">Usuario</label>
+        <div class="input-wrap">
+          <span class="input-icon">&#128100;</span>
+          <input type="text" name="usuario" placeholder="Ingrese su usuario" autofocus autocomplete="username">
+        </div>
+      </div>
 
-      <button class="button">Iniciar Sesi&oacute;n</button>
+      <div class="campo">
+        <label class="campo-label">Contrase&ntilde;a</label>
+        <div class="input-wrap">
+          <span class="input-icon">&#128274;</span>
+          <input type="password" name="password" id="pwd" placeholder="Ingrese su contrase&ntilde;a" autocomplete="current-password">
+          <span class="toggle-pwd" onclick="togglePwd()">&#128065;</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn">Iniciar Sesi&oacute;n</button>
+
     </form>
 
-    <div class="empresas">
-      <span class="emp" style="border-color:#1e4db7;color:#1e4db7;">EXALBOM</span>
-      <span class="emp" style="border-color:#c0392b;color:#c0392b;">IBES</span>
-      <span class="emp" style="border-color:#16a085;color:#16a085;">COSTA</span>
-      <span class="emp" style="border-color:#8e44ad;color:#8e44ad;">LUSO</span>
-      <span class="emp" style="border-color:#d35400;color:#d35400;">INFAMEVI</span>
-      <span class="emp" style="border-color:#27ae60;color:#27ae60;">BOMMESA</span>
+    <div class="linea-inf">
+      <div class="l"></div>
+      <div class="p"></div>
+      <div class="l"></div>
     </div>
 
     <div class="footer">
@@ -206,7 +241,15 @@ body {
     </div>
 
   </div>
+
 </div>
+
+<script>
+function togglePwd() {
+  const p = document.getElementById('pwd');
+  p.type = p.type === 'password' ? 'text' : 'password';
+}
+</script>
 
 </body>
 </html>
